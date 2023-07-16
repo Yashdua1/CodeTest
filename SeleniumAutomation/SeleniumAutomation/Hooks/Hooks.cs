@@ -21,7 +21,7 @@ namespace SeleniumAutomation.Hooks
             driverManager._driver = new ChromeDriver(chromeOpt);
             driverManager._driver.Navigate().GoToUrl("http://www.amazon.in");
             driverManager._driver.Manage().Window.Maximize();
-            driverManager._driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4A0);
+            driverManager._driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(40);
         }
 
         [BeforeScenario(Order = 1)]
