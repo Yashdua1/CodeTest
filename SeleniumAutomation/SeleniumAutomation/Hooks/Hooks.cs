@@ -13,7 +13,7 @@ namespace SeleniumAutomation.Hooks
             driverManager = _driver;
         }
 
-        [BeforeScenario("@tag1")]
+        [BeforeScenario("@Smoke"), BeforeScenario("@Regression")]
         public void BeforeScenarioWithTag()
         {
             ChromeOptions chromeOpt = new ChromeOptions();
