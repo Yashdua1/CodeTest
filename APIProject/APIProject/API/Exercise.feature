@@ -1,11 +1,5 @@
 ﻿Feature: Exercise
 
-Algorithm:
-		    1. Pass the input data DOB to the RegEx calculator.
-			2. If RegEx returns true, then return valid DOB HOW? json can have all valid responses SCENARIO 1, 2 and 3
-			3. If RegEx returns false, then return the invalid status code? HOW SCENARIO 4
-            
-
 Get Next Birthday 
 
 @Smoke
