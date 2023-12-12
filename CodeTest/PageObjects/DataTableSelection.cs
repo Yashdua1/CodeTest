@@ -43,24 +43,28 @@ namespace CodeTest.PageObjects
         {
             try
             {
-                //IWebElement checkTable = driver._driver.FindElement(By.XPath("//h5[normalize-space()='Checkbox']/following-sibling::(//table[@role='grid'])[6]"));
+                int rows = driver._driver.FindElements(By.XPath("(//table[@role='grid'])[6]//tr")).Count;
 
+                for (int iRow = 1; iRow <= rows; iRow++)
+                {
+                    int numOfCell = driver._driver.FindElements(By.XPath("(//table[@role='grid'])[6]/tbody/tr["+iRow+"]/td")).Count;
 
-                var rows = driver._driver.FindElements(By.XPath("(//table[@role='grid'])[6]//tr"));
-                    //IWebElement chkElement = driver._driver.FindElement(By.XPath("//td[contains(text(),'" + strRowText + "')]/preceding-sibling::td//input[@type='checkbox']"));
-                Assert.That(rows, Has.Count.EqualTo(10));
-                //driver._driver.FindElement(By.XPath("//td[contains(text(),'Blue Band')]//preceding::td[1]/div/div[1]/input[@type='checkbox']")).Click();
+                    for (int iCell = 1; iCell <= numOfCell; iCell++)
+                    {
+                        String category = driver._driver.FindElement(By.XPath("(//table[@role='grid'])[6]/tbody/tr["+iRow+"]/td[3]")).Text;
 
-                //td[contains(text(),'Blue Band')]/../preceding::tr[@draggable='false']//input[@type='checkbox']
+                        if (category.Equals("Blue Band"))
+                        {
+                           driver._driver.FindElement(By.XPath("(//table[@role='grid'])[6]/tbody/tr["+iRow+"]/td[1]")).Click();
+                            break;
+                        }
 
-                //WebDriverWait objWait = new WebDriverWait(driver._driver, TimeSpan.FromSeconds(40));
+                    }
+
+                }
                 
-                //objWait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//td[contains(text(),'" + strRowText + "')]/preceding-sibling::td//input[@type='checkbox']")));
-
-                //chkElement.Click();
-
-                Thread.Sleep(200);
-
+                //Assert.That(rows, Has.Count.EqualTo(10));
+                
                 driver._extentReport.SetStepStatusPass(strRowText + " Clicked successfully on the Table record");
             }
             catch(Exception ex)
